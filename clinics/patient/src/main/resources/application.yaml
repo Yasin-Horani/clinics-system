@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: PATIENT-SERVICE
+
+server:
+  port: 8081
