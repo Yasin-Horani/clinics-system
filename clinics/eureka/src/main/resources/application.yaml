@@ -3,11 +3,12 @@ server:
 
 spring:
   application:
-    name: EUREKA-SERVER
+    name: eureka-server
   cloud:
     config:
       enabled: false
+
 eureka:
   client:
-    fetch-registry: false
     register-with-eureka: false
+    fetch-registry: false
