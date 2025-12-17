@@ -1,12 +1,16 @@
 package com.microservices.doctor.service;
 
+import com.microservices.doctor.proxy.PatientProxy;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestTemplate;
 
 @Service
 public class DoctorPatientService {
-    public String getPatient(String patientName) {
-        RestTemplate restTemplate = new RestTemplate();
-        return restTemplate.getForObject("http://localhost:8081/search/" + patientName, String.class);
+
+    @Autowired
+    private PatientProxy patientProxy;
+
+    public String getPatientByFeignClient(String patientName) {
+        return this.patientProxy.getPname(patientName);
     }
 }
