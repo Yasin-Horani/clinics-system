@@ -8,11 +8,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class DoctorPatientController {
+
     @Autowired
     private DoctorPatientService doctorPatientService; ;
 
-    @GetMapping(path = "doctor/get-patient/{patientName}")
-    public String getPname(@PathVariable("patientName") String patientName) {
-        return this.doctorPatientService.getPatient(patientName);
+    @GetMapping("/doctor/get-patient/{patientName}")
+    public String getPatient(@PathVariable String patientName) {
+        return doctorPatientService.getPatientByFeignClient(patientName);
     }
 }
