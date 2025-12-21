@@ -32,3 +32,11 @@ build/
 
 ### VS Code ###
 .vscode/
+
+# =======================
+# Sensitive Files
+# =======================
+*.env
+HELP.md
+.env
+.env/
