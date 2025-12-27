@@ -1,0 +1,52 @@
+### Java ###
+*.class
+
+### Maven ###
+target/
+*.war
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+# Do not ignore the maven wrapper!
+# We want these so others can build your project without installing Maven.
+!mvnw
+!mvnw.cmd
+!.mvn/wrapper/maven-wrapper.jar
+!.mvn/wrapper/maven-wrapper.properties
+
+### IntelliJ IDEA ###
+.idea/
+*.iws
+*.iml
+*.ipr
+out/
+
+### Eclipse (just in case) ###
+.classpath
+.project
+.settings/
+bin/
+
+### Visual Studio Code ###
+.vscode/
+
+### Spring Boot / Logs ###
+logs/
+*.log
+*.log.gz
+
+### OS Specific ###
+.DS_Store
+Thumbs.db
+
+### SECRETS & ENVIRONMENT VARIABLES (Crucial!) ###
+# Ignore all .env files in any subdirectory
+.env
+*.env
+
+# Ignore specific config files that might contain passwords
+# (Adjust this if you have local-only properties files)
+**/src/main/resources/application-local.yml
+**/src/main/resources/application-local.properties
