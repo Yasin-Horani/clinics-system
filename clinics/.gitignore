@@ -9,7 +9,6 @@ target/
 *.tar.gz
 *.rar
 
-# Do not ignore the maven wrapper!
 # We want these so others can build your project without installing Maven.
 !mvnw
 !mvnw.cmd
