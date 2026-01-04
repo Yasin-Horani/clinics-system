@@ -1,6 +1,11 @@
 package com.microservices.patient.service;
 
+import com.microservices.patient.model.dto.AddPatientDTO;
+import com.microservices.patient.model.entity.Patient;
+import com.microservices.patient.repository.PatientRepo;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.Arrays;
 import java.util.List;
@@ -8,9 +13,24 @@ import java.util.List;
 @Service
 public class PatientService {
 
-    private List<String> names = Arrays.asList("yasin", "thomas", "tom");
+    @Autowired
+    private PatientRepo patientRepo;
 
-    public String getPatientName(String name) {
-        return names.stream().filter(n -> n.equals(name)).findAny().orElse("No patient found");
+//    private List<String> names = Arrays.asList("yasin", "thomas", "tom");
+//
+//    public String getPatientName(String name) {
+//        return names.stream().filter(n -> n.equals(name)).findAny().orElse("No patient found");
+//    }
+
+    public AddPatientDTO addPatient(AddPatientDTO addPatientDTO) {
+        Patient entity = Patient.builder()
+                .patientName(addPatientDTO.getPatientName())
+                .patientAge(addPatientDTO.getPatientAge())
+                .build();
+        Patient patient = this.patientRepo.save(entity);
+        return AddPatientDTO.builder()
+                .patientName(patient.getPatientName())
+                .patientAge(patient.getPatientAge())
+                .build();
     }
 }
