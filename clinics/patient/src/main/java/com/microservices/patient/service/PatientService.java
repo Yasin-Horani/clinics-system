@@ -4,24 +4,21 @@ import com.microservices.patient.model.dto.AddPatientDTO;
 import com.microservices.patient.model.dto.UpdatePatientDTO;
 import com.microservices.patient.model.entity.Patient;
 import com.microservices.patient.repository.PatientRepo;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
+@Slf4j
 @Service
 public class PatientService {
 
     @Autowired
     private PatientRepo patientRepo;
-
-//    private List<String> names = Arrays.asList("yasin", "thomas", "tom");
-//
-//    public String getPatientName(String name) {
-//        return names.stream().filter(n -> n.equals(name)).findAny().orElse("No patient found");
-//    }
 
     // add new patient
     public AddPatientDTO addPatient(AddPatientDTO addPatientDTO) {
@@ -51,4 +48,12 @@ public class PatientService {
                 .build();
     }
 
+    public void deletePatient(Long patientId) {
+        if (patientRepo.existsById(patientId)) {
+            patientRepo.deleteById(patientId);
+            log.info("Deleted patient with id {}", patientId);
+        } else {
+            log.warn("Patient with id {} does not exist", patientId);
+        }
+    }
 }

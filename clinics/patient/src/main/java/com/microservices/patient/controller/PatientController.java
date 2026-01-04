@@ -29,4 +29,8 @@ public class PatientController {
         return this.patientService.updatePatient(updatePatientDTO);
     }
 
+    @DeleteMapping(path = "/delete-patient")
+    public void deletePatient(@RequestParam Long patientId) {
+        this.patientService.deletePatient(patientId);
+    }
 }
