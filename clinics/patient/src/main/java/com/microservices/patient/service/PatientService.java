@@ -1,6 +1,7 @@
 package com.microservices.patient.service;
 
 import com.microservices.patient.model.dto.AddPatientDTO;
+import com.microservices.patient.model.dto.UpdatePatientDTO;
 import com.microservices.patient.model.entity.Patient;
 import com.microservices.patient.repository.PatientRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +23,7 @@ public class PatientService {
 //        return names.stream().filter(n -> n.equals(name)).findAny().orElse("No patient found");
 //    }
 
+    // add new patient
     public AddPatientDTO addPatient(AddPatientDTO addPatientDTO) {
         Patient entity = Patient.builder()
                 .patientName(addPatientDTO.getPatientName())
@@ -33,4 +35,20 @@ public class PatientService {
                 .patientAge(patient.getPatientAge())
                 .build();
     }
+
+    // update patient
+    public UpdatePatientDTO updatePatient(UpdatePatientDTO updatePatientDTO) {
+        Patient entity = Patient.builder()
+                .patientId(updatePatientDTO.getPatientId())
+                .patientName(updatePatientDTO.getPatientName())
+                .patientAge(updatePatientDTO.getPatientAge())
+                .build();
+        Patient patient = this.patientRepo.save(entity);
+        return UpdatePatientDTO.builder()
+                .patientId(patient.getPatientId())
+                .patientName(patient.getPatientName())
+                .patientAge(patient.getPatientAge())
+                .build();
+    }
+
 }
