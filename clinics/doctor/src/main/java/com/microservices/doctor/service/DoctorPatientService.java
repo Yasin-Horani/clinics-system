@@ -1,6 +1,7 @@
 package com.microservices.doctor.service;
 import com.microservices.doctor.model.dto.AddPatientDTO;
 import com.microservices.doctor.model.dto.PatientDTO;
+import com.microservices.doctor.model.dto.UpdatePatientDTO;
 import com.microservices.doctor.proxy.PatientProxy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,5 +24,9 @@ public class DoctorPatientService {
 
     public List<PatientDTO> getAllPatients() {
         return this.patientProxy.getAllPatients();
+    }
+
+    public PatientDTO updatePatient(UpdatePatientDTO updatePatientDTO) {
+        return this.patientProxy.updatePatient(updatePatientDTO);
     }
 }

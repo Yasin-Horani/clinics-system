@@ -1,6 +1,7 @@
 package com.microservices.doctor.controller;
 import com.microservices.doctor.model.dto.AddPatientDTO;
 import com.microservices.doctor.model.dto.PatientDTO;
+import com.microservices.doctor.model.dto.UpdatePatientDTO;
 import com.microservices.doctor.service.DoctorPatientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -27,5 +28,10 @@ public class DoctorPatientController {
     @GetMapping("/all-patient")
     public List<PatientDTO> getAllPatients() {
         return doctorPatientService.getAllPatients();
+    }
+
+    @PutMapping(path = "/update-patient")
+    public PatientDTO updatePatient(@RequestBody UpdatePatientDTO dto) {
+        return doctorPatientService.updatePatient(dto);
     }
 }
