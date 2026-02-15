@@ -3,7 +3,6 @@ package com.microservices.patient.controller;
 import com.microservices.patient.model.dto.AddPatientDTO;
 import com.microservices.patient.model.dto.PatientDTO;
 import com.microservices.patient.model.dto.UpdatePatientDTO;
-import com.microservices.patient.model.entity.Patient;
 import com.microservices.patient.service.PatientService;
 
 
@@ -27,8 +26,8 @@ public class PatientController {
     }
 
     @PutMapping(path = "/update-patient")
-    public UpdatePatientDTO updatePatient(@RequestBody UpdatePatientDTO updatePatientDTO) {
-        return this.patientService.updatePatient(updatePatientDTO);
+    public PatientDTO updatePatient(@RequestBody UpdatePatientDTO dto) {
+        return patientService.updatePatient(dto);
     }
 
     @DeleteMapping(path = "/delete-patient/{patientId}")
