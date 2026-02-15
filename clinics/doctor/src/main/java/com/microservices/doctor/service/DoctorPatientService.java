@@ -5,6 +5,8 @@ import com.microservices.doctor.proxy.PatientProxy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class DoctorPatientService {
 
@@ -17,5 +19,9 @@ public class DoctorPatientService {
 
     public AddPatientDTO addPatient(AddPatientDTO addPatientDTO) {
         return this.patientProxy.addPatient(addPatientDTO);
+    }
+
+    public List<PatientDTO> getAllPatients() {
+        return this.patientProxy.getAllPatients();
     }
 }

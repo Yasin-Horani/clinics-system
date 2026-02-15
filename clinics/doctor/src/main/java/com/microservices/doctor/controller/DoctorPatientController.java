@@ -5,7 +5,9 @@ import com.microservices.doctor.service.DoctorPatientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-@RequestMapping(path = "/doctor")
+import java.util.List;
+
+@RequestMapping(path = "/doctor/")
 @RestController
 public class DoctorPatientController {
 
@@ -20,5 +22,10 @@ public class DoctorPatientController {
     @PostMapping(path = "/add-patient")
     public AddPatientDTO addPatient(@RequestBody AddPatientDTO addPatientDTO) {
         return this.doctorPatientService.addPatient(addPatientDTO);
+    }
+
+    @GetMapping("/all-patient")
+    public List<PatientDTO> getAllPatients() {
+        return doctorPatientService.getAllPatients();
     }
 }

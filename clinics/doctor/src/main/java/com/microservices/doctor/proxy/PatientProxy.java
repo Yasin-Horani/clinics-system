@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
+import java.util.List;
+
 
 @FeignClient(name = "PATIENT-SERVICE", url = "http://localhost:8081")
 public interface PatientProxy {
@@ -16,5 +18,8 @@ public interface PatientProxy {
 
     @PostMapping(path = "/patient/add-patient")
     AddPatientDTO addPatient(@RequestBody AddPatientDTO addPatientDTO);
+
+    @GetMapping("/patient/all-patient")
+    List<PatientDTO> getAllPatients();
 }
 
