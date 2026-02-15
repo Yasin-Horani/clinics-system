@@ -1,4 +1,5 @@
 package com.microservices.doctor.service;
+import com.microservices.doctor.model.dto.AddPatientDTO;
 import com.microservices.doctor.model.dto.PatientDTO;
 import com.microservices.doctor.proxy.PatientProxy;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,5 +13,9 @@ public class DoctorPatientService {
 
     public PatientDTO getPatient(long patientId) {
         return this.patientProxy.getPatientById(patientId);
+    }
+
+    public AddPatientDTO addPatient(AddPatientDTO addPatientDTO) {
+        return this.patientProxy.addPatient(addPatientDTO);
     }
 }

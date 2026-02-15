@@ -1,4 +1,5 @@
 package com.microservices.doctor.controller;
+import com.microservices.doctor.model.dto.AddPatientDTO;
 import com.microservices.doctor.model.dto.PatientDTO;
 import com.microservices.doctor.service.DoctorPatientService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,4 +17,8 @@ public class DoctorPatientController {
         return doctorPatientService.getPatient(patientId);
     }
 
+    @PostMapping(path = "/add-patient")
+    public AddPatientDTO addPatient(@RequestBody AddPatientDTO addPatientDTO) {
+        return this.doctorPatientService.addPatient(addPatientDTO);
+    }
 }
