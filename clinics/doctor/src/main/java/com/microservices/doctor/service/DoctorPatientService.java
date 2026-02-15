@@ -3,11 +3,13 @@ import com.microservices.doctor.model.dto.AddPatientDTO;
 import com.microservices.doctor.model.dto.PatientDTO;
 import com.microservices.doctor.model.dto.UpdatePatientDTO;
 import com.microservices.doctor.proxy.PatientProxy;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Slf4j
 @Service
 public class DoctorPatientService {
 
@@ -28,5 +30,9 @@ public class DoctorPatientService {
 
     public PatientDTO updatePatient(UpdatePatientDTO updatePatientDTO) {
         return this.patientProxy.updatePatient(updatePatientDTO);
+    }
+
+    public void deletePatient(Long patientId) {
+        this.patientProxy.deletePatient(patientId);
     }
 }

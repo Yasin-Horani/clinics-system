@@ -23,5 +23,8 @@ public interface PatientProxy {
 
     @GetMapping("/patient/all-patient")
     List<PatientDTO> getAllPatients();
+
+    @DeleteMapping(path = "/patient/delete-patient/{patientId}")
+    void deletePatient(@PathVariable("patientId") Long patientId);
 }
 
