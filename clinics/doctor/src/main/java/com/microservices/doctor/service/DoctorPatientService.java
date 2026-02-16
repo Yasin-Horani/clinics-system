@@ -16,22 +16,27 @@ public class DoctorPatientService {
     @Autowired
     private PatientProxy patientProxy;
 
+    // get one patient
     public PatientDTO getPatient(long patientId) {
         return this.patientProxy.getPatientById(patientId);
     }
 
+    // add patient
     public AddPatientDTO addPatient(AddPatientDTO addPatientDTO) {
         return this.patientProxy.addPatient(addPatientDTO);
     }
 
+    // get all patient
     public List<PatientDTO> getAllPatients() {
         return this.patientProxy.getAllPatients();
     }
 
+    // update patient
     public PatientDTO updatePatient(UpdatePatientDTO updatePatientDTO) {
         return this.patientProxy.updatePatient(updatePatientDTO);
     }
 
+    // delete patient
     public void deletePatient(Long patientId) {
         this.patientProxy.deletePatient(patientId);
     }
