@@ -1,6 +1,7 @@
 package com.microservices.pay.model.dto;
 
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -14,10 +15,11 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 public class PaymentDTO {
-
     private Long paymentId;
     private UUID transactionId;
-    private Double amount;
+    private Double paymentAmount;
     private Long patientId;
+
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm EEEE")
     private LocalDateTime paymentTime;
 }

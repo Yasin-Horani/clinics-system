@@ -26,8 +26,8 @@ public class Payment {
     private Long paymentId;
     @Column(name = "transaction_id")
     private UUID transactionId;
-    @Column(name = "amount")
-    private Double amount;
+    @Column(name = "paymentAmount")
+    private Double paymentAmount;
     @Column(name = "patient_id")
     private Long patientId;
     @Column(name = "payment_time")
