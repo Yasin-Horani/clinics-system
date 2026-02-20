@@ -1,0 +1,25 @@
+package com.microservices.patient.proxy;
+
+import com.microservices.patient.model.dto.payment.AddPaymentDTO;
+import com.microservices.patient.model.dto.payment.PaymentDTO;
+import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+
+import java.util.List;
+import java.util.UUID;
+
+@FeignClient(name = "PAYMENT-SERVICE", url = "http://localhost:8082")
+public interface PatientPaymentProxy {
+    @GetMapping( "/payments/payment/{transactionId}")
+    PaymentDTO getPayment(@PathVariable UUID transactionId);
+
+    @PostMapping(path = "/payments/payment")
+    PaymentDTO addPayment(@RequestBody AddPaymentDTO addPaymentDTO);
+
+    @GetMapping("/payments/payment/patient-id/{patientId}")
+    List<PaymentDTO> getAllPaymentsByPatientId(@PathVariable Long patientId);
+}
+
