@@ -2,10 +2,12 @@ package com.microservices.pay.controller;
 
 import com.microservices.pay.model.dto.AddPaymentDTO;
 import com.microservices.pay.model.dto.PaymentDTO;
+import com.microservices.pay.model.entity.Payment;
 import com.microservices.pay.service.PaymentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.UUID;
 
 @RestController
@@ -25,5 +27,9 @@ public class PaymentController {
         return this.paymentService.addPayment(addPaymentDTO);
     }
 
+    @GetMapping("payment/patient-id/{patientId}")
+    public List<PaymentDTO> getAllPaymentsByPatientId(@PathVariable Long patientId) {
+        return this.paymentService.getAllPaymentsByPatientId(patientId);
+    }
 
 }
