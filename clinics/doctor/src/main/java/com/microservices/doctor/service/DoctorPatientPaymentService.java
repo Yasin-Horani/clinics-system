@@ -6,6 +6,7 @@ import com.microservices.doctor.proxy.PaymentProxy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.UUID;
 
 @Service
@@ -21,4 +22,7 @@ public class DoctorPatientPaymentService {
         return paymentProxy.getPayment(transactionId);
     }
 
+    public List<PaymentDTO> getAllPaymentsByPatientId(Long patientId) {
+        return paymentProxy.getAllPaymentsByPatientId(patientId);
+    }
 }

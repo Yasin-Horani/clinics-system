@@ -6,6 +6,7 @@ import com.microservices.doctor.service.DoctorPatientPaymentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.UUID;
 
 @RestController
@@ -24,4 +25,10 @@ public class DoctorPatientPaymentController {
     public PaymentDTO addPayment(@RequestBody AddPaymentDTO addPaymentDTO) {
         return this.doctorPatientPaymentService.addPayment(addPaymentDTO);
     }
+
+    @GetMapping("payment/patient-id/{patientId}")
+    public List<PaymentDTO> getAllPaymentsByPatientId(@PathVariable Long patientId) {
+        return this.doctorPatientPaymentService.getAllPaymentsByPatientId(patientId);
+    }
+
 }
