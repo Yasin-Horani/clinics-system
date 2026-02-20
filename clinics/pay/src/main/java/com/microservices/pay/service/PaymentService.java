@@ -13,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
+import java.util.List;
 import java.util.UUID;
 
 @Slf4j
@@ -44,5 +45,11 @@ public class PaymentService {
         Payment savedPayment = this.paymentRepo.save(payment);
         log.info("Payment saved: {}", savedPayment);
         return paymentMapper.PaymentToDTO(savedPayment);
+    }
+
+    public List<PaymentDTO> getAllPaymentsByPatientId(Long patientId) {
+        return paymentMapper.paymentListToDTOList(
+                paymentRepo.findAllByPatientId(patientId)
+        );
     }
 }
