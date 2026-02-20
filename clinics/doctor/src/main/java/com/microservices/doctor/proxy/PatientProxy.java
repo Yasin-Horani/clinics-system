@@ -1,8 +1,8 @@
 package com.microservices.doctor.proxy;
 
-import com.microservices.doctor.model.dto.AddPatientDTO;
-import com.microservices.doctor.model.dto.PatientDTO;
-import com.microservices.doctor.model.dto.UpdatePatientDTO;
+import com.microservices.doctor.model.dto.patient.AddPatientDTO;
+import com.microservices.doctor.model.dto.patient.PatientDTO;
+import com.microservices.doctor.model.dto.patient.UpdatePatientDTO;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.*;
 
